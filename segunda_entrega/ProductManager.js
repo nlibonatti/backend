@@ -1,3 +1,7 @@
+const fs = require(`fs`)
+
+const path = `./files/products.json`
+
 class ProductManager{
     constructor(){
         this.products = []
@@ -35,6 +39,14 @@ class ProductManager{
 
         getProductById(id){
             return (this.products.find(product => product.id === id)) || 'Error: Producto no encontrado'
+        }
+
+        updateProduct(id){
+
+        }
+
+        deleteProduct(id){
+
         }
 
         checkCode(cCode) {

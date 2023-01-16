@@ -37,6 +37,7 @@ class ProductManager{
             return (this.products.find(product => product.id === id)) || 'Error: Producto no encontrado'
         }
 
+
         checkCode(cCode) {
             return this.products.find((product) => product.code === cCode)
         }
