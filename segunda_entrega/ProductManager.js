@@ -1,5 +1,4 @@
 const fs = require('fs')
-const { get } = require('http')
 const path = './files/products.json'
 
 class ProductManager{
@@ -50,8 +49,14 @@ class ProductManager{
             return (products.find(product => product.id === id)) || 'Error: Producto no encontrado'
         }
 
-        updateProduct(id){
-
+        updateProduct(id, changeProduct){
+            const products = this.getProducts();
+            if (products.find(product => product.id === id)){
+                console.log(changeProduct)
+                console.log("id encontrado")
+            } else{
+                console.log('Error: Producto no encontrado')
+            }
         }
 
         deleteProduct(id){
@@ -84,4 +89,5 @@ productManager1.addProduct("Mac","Description Mac",100,"https://mac","abc20000",
 console.log(productManager1.getProductById(1))
 console.log(productManager1.getProductById(4))
 productManager1.deleteProduct(1)
+productManager1.updateProduct(5,[{"id":0,"title":"Mac","description":"esta es una description","price":129,"thumbnail":"https://.......","code":"ab2000000","stock":100}])
 console.log(productManager1.getProducts())
