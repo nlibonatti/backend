@@ -46,7 +46,8 @@ class ProductManager{
         } 
 
         getProductById(id){
-            return (this.products.find(product => product.id === id)) || 'Error: Producto no encontrado'
+            const products = this.getProducts();
+            return (products.find(product => product.id === id)) || 'Error: Producto no encontrado'
         }
 
         updateProduct(id){
@@ -54,8 +55,11 @@ class ProductManager{
         }
 
         deleteProduct(id){
-
-        }
+            const products = this.getProducts()
+            const newList = products.filter((product) => product.id !== id)
+            fs.writeFileSync(path, JSON.stringify(newList))
+            console.log("Producto eliminado")
+          }
 
         checkCode(cCode) {
             const products = this.getProducts()
@@ -77,6 +81,7 @@ productManager1.addProduct("Ipad","Description",500,"https://......","abc10000",
 productManager1.addProduct("Ipad","Description",500,"https://......")
 productManager1.addProduct("Iphone","Description iphone",100,"https://iphone","ab2000",20)
 productManager1.addProduct("Mac","Description Mac",100,"https://mac","abc20000",50)
-//console.log(productManager1.getProductById(2))
-//console.log(productManager1.getProductById(4))
+console.log(productManager1.getProductById(1))
+console.log(productManager1.getProductById(4))
+productManager1.deleteProduct(1)
 console.log(productManager1.getProducts())
