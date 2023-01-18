@@ -15,7 +15,6 @@ class ProductManager{
                 console.log("el producto no existe")
                 }
         }
-
         addProduct(title, description, price, thumbnail, code, stock){
 
         if(!title || !description || !price || !thumbnail || !code || !stock){
@@ -52,8 +51,10 @@ class ProductManager{
         updateProduct(id, changeProduct){
             const products = this.getProducts();
             if (products.find(product => product.id === id)){
-                console.log(changeProduct)
                 console.log("id encontrado")
+                products[index] = { ...products[index], ...changeProduct };
+                fs.writeFileSync(this.path, JSON.stringify(products, null, "\t"));
+
             } else{
                 console.log('Error: Producto no encontrado')
             }
