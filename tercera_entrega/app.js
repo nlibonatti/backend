@@ -34,17 +34,9 @@ app.get('/products/:idProduct', (req, res) => {
 
 app.post('/product',(req,res)=>{
     const product = req.body
+    console.log(product)
     productManager.addProduct(product)
     res.send('Producto agregado')
-}
-)
-
-// add product test
-
-app.post('/prod',(req,res)=>{
-  const product = req.body
-  console.log(product)
-  res.send("prueba")
 }
 )
 
