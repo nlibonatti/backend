@@ -90,5 +90,5 @@ productManager1.addProduct("Mac","Description Mac",100,"https://mac","abc20000",
 console.log(productManager1.getProductById(1))
 console.log(productManager1.getProductById(4))
 productManager1.deleteProduct(1)
-productManager1.updateProduct(5,[{"id":0,"title":"Mac","description":"esta es una description","price":129,"thumbnail":"https://.......","code":"ab2000000","stock":100}])
+productManager1.updateProduct(2,{"id":1,"title":"Mast"})
 console.log(productManager1.getProducts())
