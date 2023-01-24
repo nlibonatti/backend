@@ -19,7 +19,8 @@ export default class ProductManager{
                 console.log("el producto no existe")
                 }
         }
-        addProduct(title, description, price, thumbnail, code, stock){
+        addProduct(productNew){
+        const { title, description, price, thumbnail, code, stock } = productNew
 
         if(!title || !description || !price || !thumbnail || !code || !stock){
             console.log('Falta campo')
