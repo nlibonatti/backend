@@ -34,9 +34,19 @@ app.get('/products/:idProduct', (req, res) => {
 
 app.post('/product',(req,res)=>{
     const product = req.body
-    const productAdd =  productManager.addProduct(product)
-    res.json({message:'Producto agregado',id:productAdd.id})
-})
+    productManager.addProduct(product)
+    res.send('Producto agregado')
+}
+)
+
+// add product test
+
+app.post('/prod',(req,res)=>{
+  const product = req.body
+  console.log(product)
+  res.send("prueba")
+}
+)
 
 // delete products
 
@@ -52,12 +62,6 @@ app.delete('/product',(req,res)=>{
     productManager.deleteAllProducts()
     res.send('Usuarios eliminados')
 })
-
-app.get('/prueba/:id', (req, res)=>{
-    console.log(req.params)
-    res.send("probando")
-}
-)
 
 app.listen(8080, () => {
   console.log('Servidor puerto 8080')
