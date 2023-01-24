@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = './files/products.json'
 
-class ProductManager{
+export default class ProductManager{
     constructor(){
         this.products = []
     }
@@ -65,6 +65,12 @@ class ProductManager{
             const newList = products.filter((product) => product.id !== id)
             fs.writeFileSync(path, JSON.stringify(newList))
             console.log("Producto eliminado")
+          }
+
+        deleteAllProducts(){
+            if(fs.existsSync(this.path)){
+                fs.unlink(this.path)
+            }
           }
 
         checkCode(cCode) {
