@@ -15,6 +15,7 @@ app.get('/products',(req, res) => {
  
   const products = productManager.getProduct(req.query)
   res.json({ message: 'productos encontrados', products })
+
 })
 
 // product one
