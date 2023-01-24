@@ -52,18 +52,6 @@ export default class ProductManager{
             return (products.find(product => product.id === id)) || 'Error: Producto no encontrado'
         }
 
-        updateProduct(id, changeProduct){
-            const products = this.getProducts();
-            if (products.find(product => product.id === id)){
-                console.log("id encontrado")
-                products[index] = { ...products[index], ...changeProduct };
-                fs.writeFileSync(this.path, JSON.stringify(products, null, "\t"));
-
-            } else{
-                console.log('Error: Producto no encontrado')
-            }
-        }
-
         deleteProduct(id){
             const products = this.getProducts()
             const newList = products.filter((product) => product.id !== id)
@@ -100,5 +88,4 @@ productManager1.addProduct("Mac","Description Mac",100,"https://mac","abc20000",
 console.log(productManager1.getProductById(1))
 console.log(productManager1.getProductById(4))
 productManager1.deleteProduct(1)
-//productManager1.updateProduct(2,{"id":1,"title":"Mast"})
 console.log(productManager1.getProducts())

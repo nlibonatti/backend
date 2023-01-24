@@ -13,7 +13,7 @@ const productManager = new ProductManager('/files/products.json')
 
 app.get('/products',(req, res) => {
  
-  const products = productManager.getProduct(req.query)
+  const products = productManager.getProducts(req.query)
   res.json({ message: 'productos encontrados', products })
 
 })
@@ -52,6 +52,12 @@ app.delete('/product',(req,res)=>{
     productManager.deleteAllProducts()
     res.send('Usuarios eliminados')
 })
+
+app.get('/prueba/:id', (req, res)=>{
+    console.log(req.params)
+    res.send("probando")
+}
+)
 
 app.listen(8080, () => {
   console.log('Servidor puerto 8080')
