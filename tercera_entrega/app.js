@@ -59,7 +59,7 @@ app.delete('/product/:idProduct',(req,res)=>{
 // delete all products
 
 app.delete('/product',(req,res)=>{
-    productManager.deleteAllProducts()
+    productManager.deleteAllProducts(req.query)
     res.send('Usuarios eliminados')
 })
 
