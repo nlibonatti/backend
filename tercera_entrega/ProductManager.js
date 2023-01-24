@@ -1,5 +1,9 @@
-const fs = require('fs')
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const fs = require("fs");
+
 const path = './files/products.json'
+
 
 export default class ProductManager{
     constructor(){
@@ -96,5 +100,5 @@ productManager1.addProduct("Mac","Description Mac",100,"https://mac","abc20000",
 console.log(productManager1.getProductById(1))
 console.log(productManager1.getProductById(4))
 productManager1.deleteProduct(1)
-productManager1.updateProduct(2,{"id":1,"title":"Mast"})
+//productManager1.updateProduct(2,{"id":1,"title":"Mast"})
 console.log(productManager1.getProducts())

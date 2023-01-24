@@ -1,28 +1,27 @@
 import express from 'express'
 import ProductManager from './ProductManager.js'
-import UserManager from './ProductManager.js'
 
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-const userManager = new UserManager('/files/products.json')
+const productManager = new ProductManager('/files/products.json')
 
 // endpoints
 
 // products all
 
-app.get('/products', async (req, res) => {
+app.get('/products',(req, res) => {
  
-  const products = await ProductManager.getProduct(req.query)
+  const products = productManager.getProduct(req.query)
   res.json({ message: 'productos encontrados', products })
 })
 
 // product one
 
-app.get('/products/:idProduct', async (req, res) => {
+app.get('/products/:idProduct', (req, res) => {
   const { idProduct } = req.params
-  const product = await ProductManager.getProductById(parseInt(idProduct))
+  const product = productManager.getProductById(parseInt(idProduct))
   if(product){
       res.json({ message: 'producto encontrado', product })
   } else {
@@ -32,34 +31,27 @@ app.get('/products/:idProduct', async (req, res) => {
 
 // add product
 
-app.post('/product',async(req,res)=>{
+app.post('/product',(req,res)=>{
     const product = req.body
-  const productAdd =  await ProductManager.addProduct(product)
+    const productAdd =  productManager.addProduct(product)
     res.json({message:'Producto agregado',id:productAdd.id})
 })
 
 // delete products
 
-app.delete('/product/:idProduct',async(req,res)=>{
+app.delete('/product/:idProduct',(req,res)=>{
     const {idProduct} = req.params
-    await ProductManager.deleteProduct(parseInt(idProduct))
+    productManager.deleteProduct(parseInt(idProduct))
     res.send('Product eliminado')
 })
 
 // delete all products
 
-app.delete('/product',async(req,res)=>{
-    await ProductManager.deleteAllProducts()
+app.delete('/product',(req,res)=>{
+    productManager.deleteAllProducts()
     res.send('Usuarios eliminados')
 })
 
-
-
-
-
-
-
-
 app.listen(8080, () => {
-  console.log('Servidor escuchando al puerto 8080')
+  console.log('Servidor puerto 8080')
 })
