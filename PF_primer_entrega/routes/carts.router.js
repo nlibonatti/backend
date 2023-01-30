@@ -2,21 +2,16 @@ import { Router } from "express";
 
 const router = Router()
 
-router.get('/', (req,res) =>{
-
-})
-
 router.post('/', (req,res) =>{
 
 })
 
-router.put('/', (req,res) =>{
+router.get('/:cid', (req,res) =>{
 
 })
 
-router.delete('/', (req,res) =>{
+router.post('/:cid/product/:pid ', (req,res) =>{
 
 })
-
 
 export default router
