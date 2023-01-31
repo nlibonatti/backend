@@ -1,9 +1,9 @@
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const fs = require("fs");
-
 const path = './files/carts.json'
 
+//Carts
 
 export default class CartManager{
     constructor(){
@@ -33,14 +33,12 @@ export default class CartManager{
                 }   
 
         addProductCart(CartNew){
-        const { idProduct, quantity  } = CartNew
+        const { idProduct, quantity , idCart } = CartNew
 
-        if( !idProduct|| !quantity ){
+        if( !idProduct|| !quantity || !idCart){
             console.log('Falta campo')} 
             else {
-
             const cart = {
-                id: this.#addId(),
                 idProduct,
                 quantity
             }

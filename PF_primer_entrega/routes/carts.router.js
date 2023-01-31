@@ -28,7 +28,7 @@ router.post('/:cid/product/:pid ', (req,res) =>{
     const cart = cartManager.getCartById(parseInt(idCart))
     if(cart){
         res.json({ message: 'carrito encontrado', cart })
-        cartManager(pId, 1)
+        cartManager(pId, 1, idCart)
     } else {
       res.status(400).send('carrito no existe')
     }
