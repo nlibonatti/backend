@@ -1,4 +1,7 @@
 import { Router } from "express"; 
+import ProductManager from '../ProductManager.js'
+
+const productManager = new ProductManager('/files/products.json')
 
 const router = Router()
 
@@ -8,7 +11,7 @@ const router = Router()
 
 router.get('/',(req, res) => {
  
-    const products = productManager.getProducts(req.query)
+    const products = productManager.getProducts(req.query.limit)
     res.json({ message: 'productos encontrados', products })
   
   })
@@ -27,7 +30,7 @@ router.get('/',(req, res) => {
   
   // add product
   
-  router.post('/product',(req,res)=>{
+  router.post('/',(req,res)=>{
       const product = req.body
       console.log(product)
       productManager.addProduct(product)
