@@ -32,18 +32,17 @@ export default class CartManager{
                     
                 }   
 
-        addCart(CartNew){
-        const { title, quantity, idProduct } = CartNew
+        addProductCart(CartNew){
+        const { idProduct, quantity  } = CartNew
 
-        if(!title || !quantity || !idProduct){
+        if( !idProduct|| !quantity ){
             console.log('Falta campo')} 
             else {
 
             const cart = {
                 id: this.#addId(),
-                title,
-                quantity,
-                idProduct
+                idProduct,
+                quantity
             }
             const cartFile = this.getCart()
             productsFile.push(cart)
@@ -55,11 +54,6 @@ export default class CartManager{
         getCartById(id){
             const carts = this.getCart();
             return (carts.find(cart => cart.id === id)) || 'Error: Carrito no encontrado'
-        }
-
-        checkCode(cCode) {
-            const carts = this.getCart()
-            return carts.find((cart) => cart.code === cCode)
         }
 
         #addId(){

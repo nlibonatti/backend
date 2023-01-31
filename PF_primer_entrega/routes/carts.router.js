@@ -14,7 +14,7 @@ router.post('/',(req,res)=>{
 )
 router.get('/:cid', (req, res) => {
     const { idCart } = req.params
-    const cart = cartManager.getCarById(parseInt(idCart))
+    const cart = cartManager.getCartById(parseInt(idCart))
     if(product){
         res.json({ message: 'carrito encontrado', cart })
     } else {
@@ -24,7 +24,14 @@ router.get('/:cid', (req, res) => {
 
 router.post('/:cid/product/:pid ', (req,res) =>{
 
-    
+    const { idCart , pId } = req.params
+    const cart = cartManager.getCartById(parseInt(idCart))
+    if(cart){
+        res.json({ message: 'carrito encontrado', cart })
+        cartManager(pId, 1)
+    } else {
+      res.status(400).send('carrito no existe')
+    }
 
 })
 
