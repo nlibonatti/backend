@@ -3,5 +3,8 @@
   "main": "ProductManager.js",
   "dependencies": {
     "express": "^4.18.2"
-  }
+  },
+  "scripts": {
+    "start": "node app.js"
+   }
 }

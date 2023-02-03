@@ -66,6 +66,26 @@ export default class ProductManager{
             }
           }
 
+        modifyProduct(idProduct, title , description , thumbnail , code , stock){
+            
+            const product = {
+                idProduct,
+                title,
+                description,
+                price,
+                thumbnail,
+                code,
+                stock
+            }
+            this.deleteProduct(idProduct)
+            
+            const productsFile = this.getProducts()
+            productsFile.push(product)
+            fs.writeFileSync(path, JSON.stringify(productsFile));
+
+
+        }
+
         checkCode(cCode) {
             const products = this.getProducts()
             return products.find((product) => product.code === cCode)

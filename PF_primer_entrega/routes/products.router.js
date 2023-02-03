@@ -1,8 +1,6 @@
 import { Router } from "express"; 
 import ProductManager from '../ProductManager.js'
-
 const productManager = new ProductManager('/files/products.json')
-
 const router = Router()
 
 // Products
@@ -37,6 +35,15 @@ router.get('/',(req, res) => {
       res.send('Producto agregado')
   }
   )
+
+    // modify product
+  
+    router.put('/:idProduct',(req,res)=>{
+        const {idProduct} = req.params
+        const {} = req.body
+        productManager.deleteProduct(parseInt(idProduct))
+        res.send('Product modificado')
+    })
   
   // delete products
   

@@ -27,7 +27,7 @@ export default class CartManager{
                     product: []
                 }
                 const cartFile = this.getCart()
-                productsFile.push(cart)
+                cartFile.push(cart)
                 fs.writeFileSync(path, JSON.stringify(cartFile));
                     
                 }   
@@ -43,7 +43,7 @@ export default class CartManager{
                 quantity
             }
             const cartFile = this.getCart()
-            productsFile.push(cart)
+            cartFile.push(cart)
             fs.writeFileSync(path, JSON.stringify(cartFile));
                 
             }   
